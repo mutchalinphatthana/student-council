@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Kanit',sans-serif;
+}
+
+body{
+    background:#f8f9fc;
+}
+
+/* พื้นหลัง */
+.hero{
+    position:relative;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+        linear-gradient(rgba(255,255,255,.85),
+        rgba(255,255,255,.85)),
+        linear-gradient(#d9e3ff 1px, transparent 1px),
+        linear-gradient(90deg,#d9e3ff 1px, transparent 1px);
+
+    background-size:
+        cover,
+        40px 40px,
+        40px 40px;
+}
+
+/* ชื่อเว็บ */
+.website{
+    position:absolute;
+    top:30px;
+
+    color:#5d94f5;
+    font-size:32px;
+    font-weight:600;
+}
+
+/* โลโก้ */
+.school-logo{
+    position:absolute;
+    top:20px;
+    right:30px;
+}
+
+.school-logo img{
+    width:130px;
+    background:white;
+    padding:10px;
+    border-radius:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+/* หัวข้อ */
+.content h1,
+.content h2{
+    color:white;
+    -webkit-text-stroke:3px #5d94f5;
+    text-shadow:
+        0 0 10px #7eb0ff,
+        0 0 20px #7eb0ff;
+
+    font-size:80px;
+    line-height:1.1;
+}
+
+/* กล่องชมพู */
+.committee-box{
+    margin-top:25px;
+    background:#ff3f77;
+    color:white;
+
+    padding:15px 40px;
+
+    border-radius:20px;
+
+    font-size:40px;
+    font-weight:600;
+
+    display:inline-block;
+
+    box-shadow:0 8px 0 #cf2458;
+}
+
+/* ข้อความล่าง */
+.content p{
+    margin-top:20px;
+    font-size:28px;
+    color:#ff3f77;
+    font-weight:600;
+}
+
