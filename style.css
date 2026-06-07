@@ -11,28 +11,22 @@ body{
     background: #f8f9fc;
 }
 
-/* --- สไตล์สำหรับหน้าจอคอมพิวเตอร์ (Desktop) --- */
-
-/* พื้นหลัง */
+/* --- สำหรับหน้าจอคอมพิวเตอร์ (Desktop) --- */
 .hero{
     position: relative;
     min-height: 100vh;
     padding: 120px 20px 40px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
     background:
         linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)),
         linear-gradient(#d9e3ff 1px, transparent 1px),
         linear-gradient(90deg,#d9e3ff 1px, transparent 1px);
-
     background-size: cover, 40px 40px, 40px 40px;
 }
 
-/* ชื่อเว็บ */
 .website{
     position: absolute;
     top: 30px;
@@ -41,7 +35,6 @@ body{
     font-weight: 600;
 }
 
-/* โลโก้ */
 .school-logo{
     position: absolute;
     top: 20px;
@@ -56,19 +49,24 @@ body{
     box-shadow: 0 4px 15px rgba(0,0,0,.2);
 }
 
-/* หัวข้อ */
-.content h1,
+.content h1{
+    color: white;
+    -webkit-text-stroke: 3px #5d94f5;
+    text-shadow: 0 0 10px #7eb0ff, 0 0 20px #7eb0ff;
+    font-size: 80px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
 .content h2{
     color: white;
     -webkit-text-stroke: 3px #5d94f5;
-    text-shadow:
-        0 0 10px #7eb0ff,
-        0 0 20px #7eb0ff;
-    font-size: 80px;
-    line-height: 1.2; /* ปรับให้ห่างขึ้นเล็กน้อยกันฟอนต์ล้นทับกัน */
+    text-shadow: 0 0 10px #7eb0ff, 0 0 20px #7eb0ff;
+    font-size: 60px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
-/* กล่องชมพู */
 .committee-box{
     margin-top: 25px;
     background: #ff3f77;
@@ -81,7 +79,6 @@ body{
     box-shadow: 0 8px 0 #cf2458;
 }
 
-/* ข้อความล่าง */
 .content p{
     margin-top: 20px;
     font-size: 28px;
@@ -90,64 +87,73 @@ body{
 }
 
 
-/* --- สไตล์สำหรับโทรศัพท์มือถือ (Mobile @media ยุบรวมเหลืออันเดียว) --- */
+/* --- สำหรับหน้าจอมือถือ (แก้ไขปัญหาตัวอักษรทับกันทั้งหมด) --- */
 @media (max-width: 768px) {
     .hero {
-        flex-direction: column; /* จัดเรียงโลโก้ ชื่อเว็บ เนื้อหา ลงมาเป็นแนวตั้งเรียงกัน */
-        padding: 80px 20px 40px; /* เว้นพื้นที่ด้านบนหลบชื่อเว็บ */
-        justify-content: flex-start; /* ให้เนื้อหาเริ่มเรียงจากด้านบนลงมา */
+        flex-direction: column; 
+        justify-content: flex-start;
+        padding: 40px 20px; /* ลด padding เพื่อให้มีพื้นที่เหลือบนหน้าจอ */
+        min-height: 100vh;
     }
 
+    /* เปลี่ยนชื่อเว็บให้ไหลตามปกติ ไม่ลอยทับใคร */
     .website {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%); /* จัดให้อยู่กึ่งกลางหน้าจอแน่นอน */
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
         font-size: 16px;
         width: 100%;
-        text-align: center;
-        padding: 0 10px;
+        margin-bottom: 15px;
     }
 
+    /* เปลี่ยนโลโก้ให้ลงมาอยู่ใต้ชื่อเว็บ ไม่ลอยทับตัวหนังสือ */
     .school-logo {
-        position: relative; /* ปลดล็อกไม่ให้ลอยทับข้อความ */
+        position: relative;
         top: 0;
         right: 0;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .school-logo img {
-        width: 90px;
+        width: 100px;
         padding: 8px;
-        border-radius: 18px;
+        border-radius: 20px;
     }
 
     .content {
         width: 100%;
     }
 
+    /* ลดขนาด สภานักเรียน ลงมาเพื่อให้พอดีใน 1 บรรทัด หรือถ้าตกลงมาก็จะไม่ทับตัวอื่น */
     .content h1 {
-        font-size: 34px; /* ขนาดกำลังสวยบนมือถือ ไม่ล้นจอ */
-        line-height: 1.3; /* เพิ่มช่องว่างระหว่างบรรทัดไม่ให้ทับกัน */
+        font-size: 38px; 
+        line-height: 1.4 !important; 
+        margin-bottom: 15px !important; /* ดัน h2 ลงไปข้างล่าง */
         -webkit-text-stroke: 1.5px #5d94f5;
     }
 
+    /* ลดขนาด โรงเรียนศรีสองรักษ์วิทยา */
     .content h2 {
-        font-size: 24px;
-        line-height: 1.3;
+        font-size: 26px;
+        line-height: 1.4 !important;
+        margin-bottom: 25px !important; /* ดันกล่องชมพูลงไป */
         -webkit-text-stroke: 1px #5d94f5;
     }
 
+    /* กล่องชมพูภาษาอังกฤษ */
     .committee-box {
-        display: block;
-        width: 90%;
-        font-size: 18px;
-        padding: 12px;
-        margin: 25px auto 0; /* จัดกึ่งกลางกล่องชมพู */
+        display: inline-block; /* เปลี่ยนเป็น inline-block เพื่อให้กล่องหดตามตัวอักษรสวยงาม */
+        width: 100%;
+        max-width: 340px; /* จำกัดความกว้างไม่ให้ล้นจอมือถือเล็ก */
+        font-size: 16px;
+        padding: 12px 15px;
+        margin-top: 10px;
+        white-space: normal; /* ยอมให้ข้อความภาษาอังกฤษตัดขึ้นบรรทัดใหม่ได้ */
     }
 
     .content p {
-        font-size: 18px;
+        font-size: 16px;
+        margin-top: 15px;
     }
 }
