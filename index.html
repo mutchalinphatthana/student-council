@@ -3,38 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สภานักเรียน โรงเรียนศรีสองรักษ์วิทยา</title>
-    <link rel="stylesheet" href="style.css">
+    <title>สภานักเรียนโรงเรียนศรีสองรักษ์วิทยา</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 1. แถบเมนูด้านบนสุด (Navbar) - ปรับแก้ขยับเข้าใกล้กันตรงนี้ */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 25%; /* 💡 เพิ่มค่าจาก 8% เป็น 16% เพื่อบีบให้ชื่อโรงเรียนขยับไปใกล้เมนูหน้าแรก */
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: padding 0.3s ease; /* เอฟเฟกต์สมูท */
+        }
+
+        .nav-logo {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            white-space: nowrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 2. ส่วนแบนเนอร์ตรงกลาง (Hero Section) */
+        .hero {
+            width: 100%;
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            background-color: #ffffff;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, rgba(255,255,255) 70%);
+            top: -50px;
+            left: -50px;
+            z-index: 1;
+        }
+
+        .website {
+            font-size: 14px;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .school-logo {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            z-index: 2;
+        }
+
+        .school-logo img {
+            width: 75px; 
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .content h1 {
+            font-size: 44px;
+            color: #2563eb;
+            font-weight: 700;
+            line-height: 1.0;  
+            margin: 0;         
+        }
+
+        .content h2 {
+            font-size: 38px;
+            color: #2563eb;
+            font-weight: 700;
+            line-height: 1.1;  
+            margin-top: 5px;   
+            margin-bottom: 20px; 
+        }
+
+        .committee-box {
+            display: inline-block;
+            background-color: #f43f5e; 
+            color: #ffffff;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(244,63,94,0.2);
+        }
+
+        .content p {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* 3. โซนปุ่มกด 8 ปุ่ม */
+        .menu-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 10px 20px 60px 20px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
+        }
+
+        .menu-icon-box {
+            font-size: 26px;
+            margin-bottom: 15px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .menu-desc {
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        .fa-circle-info { color: #60a5fa; }
+        .fa-users-viewfinder { color: #4f46e5; }
+        .fa-newspaper { color: #38bdf8; }
+        .fa-school { color: #2563eb; }
+        .fa-folder-closed { color: #818cf8; }
+        .fa-gamepad { color: #f97316; }
+        .fa-cloud-sun { color: #0284c7; }
+        .fa-box-open { color: #f43f5e; }
+
+        /* โบว์ไว้อาลัย */
+        .mourning-ribbon {
+            position: fixed;
+            top: 65px;
+            right: 20px;
+            z-index: 999;
+            width: 45px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* ======================================================= */
+        /* Responsive */
+        /* ======================================================= */
+        @media (max-width: 1024px) {
+            .navbar { padding: 15px 5%; } /* ถ้าจอเล็กลงให้ปรับขอบกลับมาปกติเพื่อไม่ให้เมนูซ้อน */
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .nav-links { display: none; }
+            
+            .hero {
+                margin: 10px;
+                padding: 30px 15px;
+            }
+            .school-logo {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 15px;
+            }
+            .school-logo img { width: 60px; }
+            .content h1 { font-size: 32px; }
+            .content h2 { font-size: 26px; margin-top: 2px; }
+            .committee-box { font-size: 11px; padding: 6px 15px; }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .menu-section { padding: 10px; }
+            .mourning-ribbon { width: 35px; top: 55px; }
+        }
+    </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="nav-logo">สภานักเรียนโรงเรียนศรีสองรักษ์วิทยา</div>
+        <ul class="nav-links">
+            <li><a href="#">หน้าแรก</a></li>
+            <li><a href="#">ข่าวสาร <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a></li>
+            <li><a href="#">เกี่ยวกับสภานักเรียน <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a></li>
+            <li><a href="#">ทำเนียบ <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a></li>
+            <li><a href="#">กิจกรรมสภานักเรียน <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+        <div class="nav-right">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </nav>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/3133/3133036.png" class="mourning-ribbon" alt="Ribbon">
+
     <section class="hero">
-
-        <!-- โลโก้เว็บ -->
         <div class="website">
-            🌐 mutchalinphatthana.official
-
+            <i class="fa-solid fa-globe"></i> mutchalinphatthana.official
         </div>
 
-        <!-- โลโก้โรงเรียน -->
         <div class="school-logo">
             <img src="IMG_0221.jpg" alt="โลโก้โรงเรียน">
         </div>
 
-        <!-- ข้อความหลัก -->
         <div class="content">
             <h1>สภานักเรียน</h1>
             <h2>โรงเรียนศรีสองรักษ์วิทยา</h2>
 
             <div class="committee-box">
-                Student Council of Srisongrak Wittaya School
+                Srisongrak Wittaya School Student Council
             </div>
 
             <p>เว็บไซต์ตัวอย่างเป็นทางการ</p>
         </div>
+    </section>
 
+    <section class="menu-section">
+        <div class="menu-grid">
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-circle-info"></i></div>
+                <div class="menu-title">เกี่ยวกับสภานักเรียน</div>
+                <div class="menu-desc">ทำความรู้จักพวกเรา</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <div class="menu-title">ทำเนียบสภาฯ</div>
+                <div class="menu-desc">รายชื่อคณะกรรมการสภาฯ</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-newspaper"></i></div>
+                <div class="menu-title">จดหมายข่าว</div>
+                <div class="menu-desc">ติดตามข่าวสารสภาฯ</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-school"></i></div>
+                <div class="menu-title">เว็บไซต์โรงเรียน</div>
+                <div class="menu-desc">ลิงก์ตรงเข้าสู่เว็บหลัก</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-folder-closed"></i></div>
+                <div class="menu-title">PASS-PORT</div>
+                <div class="menu-desc">ส่งต่อ Portfolio</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="menu-title">SSR Esports</div>
+                <div class="menu-desc">การแข่งขัน Esports</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-cloud-sun"></i></div>
+                <div class="menu-title">คุณท้องฟ้า 🤍</div>
+                <div class="menu-desc">มีอะไรอยากระบายมั้ย 💕</div>
+            </a>
+
+            <a href="#" class="menu-item">
+                <div class="menu-icon-box"><i class="fa-solid fa-box-open"></i></div>
+                <div class="menu-title">กล่องใส่ใจ 💕</div>
+                <div class="menu-desc">แจ้งปัญหาภายในโรงเรียน</div>
+            </a>
+
+        </div>
     </section>
 
 </body>
 </html>
-
